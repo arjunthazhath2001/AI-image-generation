@@ -130,11 +130,13 @@ exports.Prisma.UserScalarFieldEnum = {
 
 exports.Prisma.ModelScalarFieldEnum = {
   id: 'id',
-  username: 'username',
+  name: 'name',
   type: 'type',
+  age: 'age',
   ethnicity: 'ethnicity',
   eyeColor: 'eyeColor',
   bald: 'bald',
+  userId: 'userId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -188,11 +190,11 @@ exports.ModelTypeEnum = exports.$Enums.ModelTypeEnum = {
 exports.EthnicityEnum = exports.$Enums.EthnicityEnum = {
   White: 'White',
   Black: 'Black',
-  AsianAmerican: 'AsianAmerican',
-  EastAsian: 'EastAsian',
-  SouthEastAsian: 'SouthEastAsian',
-  SouthAsian: 'SouthAsian',
-  MiddleEastern: 'MiddleEastern',
+  Asian_American: 'Asian_American',
+  East_Asian: 'East_Asian',
+  South_East_Asian: 'South_East_Asian',
+  South_Asian: 'South_Asian',
+  Middle_Eastern: 'Middle_Eastern',
   Pacific: 'Pacific',
   Hispanic: 'Hispanic'
 };

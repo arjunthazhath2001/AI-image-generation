@@ -60,11 +60,11 @@ export type ModelTypeEnum = (typeof ModelTypeEnum)[keyof typeof ModelTypeEnum]
 export const EthnicityEnum: {
   White: 'White',
   Black: 'Black',
-  AsianAmerican: 'AsianAmerican',
-  EastAsian: 'EastAsian',
-  SouthEastAsian: 'SouthEastAsian',
-  SouthAsian: 'SouthAsian',
-  MiddleEastern: 'MiddleEastern',
+  Asian_American: 'Asian_American',
+  East_Asian: 'East_Asian',
+  South_East_Asian: 'South_East_Asian',
+  South_Asian: 'South_Asian',
+  Middle_Eastern: 'Middle_Eastern',
   Pacific: 'Pacific',
   Hispanic: 'Hispanic'
 };
@@ -2446,74 +2446,104 @@ export namespace Prisma {
 
   export type AggregateModel = {
     _count: ModelCountAggregateOutputType | null
+    _avg: ModelAvgAggregateOutputType | null
+    _sum: ModelSumAggregateOutputType | null
     _min: ModelMinAggregateOutputType | null
     _max: ModelMaxAggregateOutputType | null
   }
 
+  export type ModelAvgAggregateOutputType = {
+    age: number | null
+  }
+
+  export type ModelSumAggregateOutputType = {
+    age: number | null
+  }
+
   export type ModelMinAggregateOutputType = {
     id: string | null
-    username: string | null
+    name: string | null
     type: $Enums.ModelTypeEnum | null
+    age: number | null
     ethnicity: $Enums.EthnicityEnum | null
     eyeColor: $Enums.EyeColorEnum | null
     bald: boolean | null
+    userId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
   export type ModelMaxAggregateOutputType = {
     id: string | null
-    username: string | null
+    name: string | null
     type: $Enums.ModelTypeEnum | null
+    age: number | null
     ethnicity: $Enums.EthnicityEnum | null
     eyeColor: $Enums.EyeColorEnum | null
     bald: boolean | null
+    userId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
   export type ModelCountAggregateOutputType = {
     id: number
-    username: number
+    name: number
     type: number
+    age: number
     ethnicity: number
     eyeColor: number
     bald: number
+    userId: number
     createdAt: number
     updatedAt: number
     _all: number
   }
 
 
+  export type ModelAvgAggregateInputType = {
+    age?: true
+  }
+
+  export type ModelSumAggregateInputType = {
+    age?: true
+  }
+
   export type ModelMinAggregateInputType = {
     id?: true
-    username?: true
+    name?: true
     type?: true
+    age?: true
     ethnicity?: true
     eyeColor?: true
     bald?: true
+    userId?: true
     createdAt?: true
     updatedAt?: true
   }
 
   export type ModelMaxAggregateInputType = {
     id?: true
-    username?: true
+    name?: true
     type?: true
+    age?: true
     ethnicity?: true
     eyeColor?: true
     bald?: true
+    userId?: true
     createdAt?: true
     updatedAt?: true
   }
 
   export type ModelCountAggregateInputType = {
     id?: true
-    username?: true
+    name?: true
     type?: true
+    age?: true
     ethnicity?: true
     eyeColor?: true
     bald?: true
+    userId?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -2557,6 +2587,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: ModelAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ModelSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: ModelMinAggregateInputType
@@ -2587,20 +2629,26 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: ModelCountAggregateInputType | true
+    _avg?: ModelAvgAggregateInputType
+    _sum?: ModelSumAggregateInputType
     _min?: ModelMinAggregateInputType
     _max?: ModelMaxAggregateInputType
   }
 
   export type ModelGroupByOutputType = {
     id: string
-    username: string
+    name: string
     type: $Enums.ModelTypeEnum
+    age: number
     ethnicity: $Enums.EthnicityEnum
     eyeColor: $Enums.EyeColorEnum
     bald: boolean
+    userId: string
     createdAt: Date
     updatedAt: Date
     _count: ModelCountAggregateOutputType | null
+    _avg: ModelAvgAggregateOutputType | null
+    _sum: ModelSumAggregateOutputType | null
     _min: ModelMinAggregateOutputType | null
     _max: ModelMaxAggregateOutputType | null
   }
@@ -2621,11 +2669,13 @@ export namespace Prisma {
 
   export type ModelSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    username?: boolean
+    name?: boolean
     type?: boolean
+    age?: boolean
     ethnicity?: boolean
     eyeColor?: boolean
     bald?: boolean
+    userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     trainingImages?: boolean | Model$trainingImagesArgs<ExtArgs>
@@ -2635,38 +2685,44 @@ export namespace Prisma {
 
   export type ModelSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    username?: boolean
+    name?: boolean
     type?: boolean
+    age?: boolean
     ethnicity?: boolean
     eyeColor?: boolean
     bald?: boolean
+    userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["model"]>
 
   export type ModelSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    username?: boolean
+    name?: boolean
     type?: boolean
+    age?: boolean
     ethnicity?: boolean
     eyeColor?: boolean
     bald?: boolean
+    userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["model"]>
 
   export type ModelSelectScalar = {
     id?: boolean
-    username?: boolean
+    name?: boolean
     type?: boolean
+    age?: boolean
     ethnicity?: boolean
     eyeColor?: boolean
     bald?: boolean
+    userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type ModelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "type" | "ethnicity" | "eyeColor" | "bald" | "createdAt" | "updatedAt", ExtArgs["result"]["model"]>
+  export type ModelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "type" | "age" | "ethnicity" | "eyeColor" | "bald" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["model"]>
   export type ModelInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     trainingImages?: boolean | Model$trainingImagesArgs<ExtArgs>
     outputImages?: boolean | Model$outputImagesArgs<ExtArgs>
@@ -2683,11 +2739,13 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      username: string
+      name: string
       type: $Enums.ModelTypeEnum
+      age: number
       ethnicity: $Enums.EthnicityEnum
       eyeColor: $Enums.EyeColorEnum
       bald: boolean
+      userId: string
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["model"]>
@@ -3116,11 +3174,13 @@ export namespace Prisma {
    */
   interface ModelFieldRefs {
     readonly id: FieldRef<"Model", 'String'>
-    readonly username: FieldRef<"Model", 'String'>
+    readonly name: FieldRef<"Model", 'String'>
     readonly type: FieldRef<"Model", 'ModelTypeEnum'>
+    readonly age: FieldRef<"Model", 'Int'>
     readonly ethnicity: FieldRef<"Model", 'EthnicityEnum'>
     readonly eyeColor: FieldRef<"Model", 'EyeColorEnum'>
     readonly bald: FieldRef<"Model", 'Boolean'>
+    readonly userId: FieldRef<"Model", 'String'>
     readonly createdAt: FieldRef<"Model", 'DateTime'>
     readonly updatedAt: FieldRef<"Model", 'DateTime'>
   }
@@ -7770,11 +7830,13 @@ export namespace Prisma {
 
   export const ModelScalarFieldEnum: {
     id: 'id',
-    username: 'username',
+    name: 'name',
     type: 'type',
+    age: 'age',
     ethnicity: 'ethnicity',
     eyeColor: 'eyeColor',
     bald: 'bald',
+    userId: 'userId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -7892,6 +7954,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
    * Reference to a field of type 'EthnicityEnum'
    */
   export type EnumEthnicityEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'EthnicityEnum'>
@@ -7927,16 +8003,16 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Int'
+   * Reference to a field of type 'Float'
    */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
     
 
 
   /**
-   * Reference to a field of type 'Int[]'
+   * Reference to a field of type 'Float[]'
    */
-  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
   /**
    * Deep Input Types
@@ -8000,11 +8076,13 @@ export namespace Prisma {
     OR?: ModelWhereInput[]
     NOT?: ModelWhereInput | ModelWhereInput[]
     id?: StringFilter<"Model"> | string
-    username?: StringFilter<"Model"> | string
+    name?: StringFilter<"Model"> | string
     type?: EnumModelTypeEnumFilter<"Model"> | $Enums.ModelTypeEnum
+    age?: IntFilter<"Model"> | number
     ethnicity?: EnumEthnicityEnumFilter<"Model"> | $Enums.EthnicityEnum
     eyeColor?: EnumEyeColorEnumFilter<"Model"> | $Enums.EyeColorEnum
     bald?: BoolFilter<"Model"> | boolean
+    userId?: StringFilter<"Model"> | string
     createdAt?: DateTimeFilter<"Model"> | Date | string
     updatedAt?: DateTimeFilter<"Model"> | Date | string
     trainingImages?: TrainingImagesListRelationFilter
@@ -8013,11 +8091,13 @@ export namespace Prisma {
 
   export type ModelOrderByWithRelationInput = {
     id?: SortOrder
-    username?: SortOrder
+    name?: SortOrder
     type?: SortOrder
+    age?: SortOrder
     ethnicity?: SortOrder
     eyeColor?: SortOrder
     bald?: SortOrder
+    userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     trainingImages?: TrainingImagesOrderByRelationAggregateInput
@@ -8029,11 +8109,13 @@ export namespace Prisma {
     AND?: ModelWhereInput | ModelWhereInput[]
     OR?: ModelWhereInput[]
     NOT?: ModelWhereInput | ModelWhereInput[]
-    username?: StringFilter<"Model"> | string
+    name?: StringFilter<"Model"> | string
     type?: EnumModelTypeEnumFilter<"Model"> | $Enums.ModelTypeEnum
+    age?: IntFilter<"Model"> | number
     ethnicity?: EnumEthnicityEnumFilter<"Model"> | $Enums.EthnicityEnum
     eyeColor?: EnumEyeColorEnumFilter<"Model"> | $Enums.EyeColorEnum
     bald?: BoolFilter<"Model"> | boolean
+    userId?: StringFilter<"Model"> | string
     createdAt?: DateTimeFilter<"Model"> | Date | string
     updatedAt?: DateTimeFilter<"Model"> | Date | string
     trainingImages?: TrainingImagesListRelationFilter
@@ -8042,16 +8124,20 @@ export namespace Prisma {
 
   export type ModelOrderByWithAggregationInput = {
     id?: SortOrder
-    username?: SortOrder
+    name?: SortOrder
     type?: SortOrder
+    age?: SortOrder
     ethnicity?: SortOrder
     eyeColor?: SortOrder
     bald?: SortOrder
+    userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: ModelCountOrderByAggregateInput
+    _avg?: ModelAvgOrderByAggregateInput
     _max?: ModelMaxOrderByAggregateInput
     _min?: ModelMinOrderByAggregateInput
+    _sum?: ModelSumOrderByAggregateInput
   }
 
   export type ModelScalarWhereWithAggregatesInput = {
@@ -8059,11 +8145,13 @@ export namespace Prisma {
     OR?: ModelScalarWhereWithAggregatesInput[]
     NOT?: ModelScalarWhereWithAggregatesInput | ModelScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Model"> | string
-    username?: StringWithAggregatesFilter<"Model"> | string
+    name?: StringWithAggregatesFilter<"Model"> | string
     type?: EnumModelTypeEnumWithAggregatesFilter<"Model"> | $Enums.ModelTypeEnum
+    age?: IntWithAggregatesFilter<"Model"> | number
     ethnicity?: EnumEthnicityEnumWithAggregatesFilter<"Model"> | $Enums.EthnicityEnum
     eyeColor?: EnumEyeColorEnumWithAggregatesFilter<"Model"> | $Enums.EyeColorEnum
     bald?: BoolWithAggregatesFilter<"Model"> | boolean
+    userId?: StringWithAggregatesFilter<"Model"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Model"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Model"> | Date | string
   }
@@ -8316,11 +8404,13 @@ export namespace Prisma {
 
   export type ModelCreateInput = {
     id?: string
-    username: string
+    name: string
     type: $Enums.ModelTypeEnum
+    age: number
     ethnicity: $Enums.EthnicityEnum
     eyeColor: $Enums.EyeColorEnum
     bald: boolean
+    userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
     trainingImages?: TrainingImagesCreateNestedManyWithoutModelInput
@@ -8329,11 +8419,13 @@ export namespace Prisma {
 
   export type ModelUncheckedCreateInput = {
     id?: string
-    username: string
+    name: string
     type: $Enums.ModelTypeEnum
+    age: number
     ethnicity: $Enums.EthnicityEnum
     eyeColor: $Enums.EyeColorEnum
     bald: boolean
+    userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
     trainingImages?: TrainingImagesUncheckedCreateNestedManyWithoutModelInput
@@ -8342,11 +8434,13 @@ export namespace Prisma {
 
   export type ModelUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     type?: EnumModelTypeEnumFieldUpdateOperationsInput | $Enums.ModelTypeEnum
+    age?: IntFieldUpdateOperationsInput | number
     ethnicity?: EnumEthnicityEnumFieldUpdateOperationsInput | $Enums.EthnicityEnum
     eyeColor?: EnumEyeColorEnumFieldUpdateOperationsInput | $Enums.EyeColorEnum
     bald?: BoolFieldUpdateOperationsInput | boolean
+    userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     trainingImages?: TrainingImagesUpdateManyWithoutModelNestedInput
@@ -8355,11 +8449,13 @@ export namespace Prisma {
 
   export type ModelUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     type?: EnumModelTypeEnumFieldUpdateOperationsInput | $Enums.ModelTypeEnum
+    age?: IntFieldUpdateOperationsInput | number
     ethnicity?: EnumEthnicityEnumFieldUpdateOperationsInput | $Enums.EthnicityEnum
     eyeColor?: EnumEyeColorEnumFieldUpdateOperationsInput | $Enums.EyeColorEnum
     bald?: BoolFieldUpdateOperationsInput | boolean
+    userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     trainingImages?: TrainingImagesUncheckedUpdateManyWithoutModelNestedInput
@@ -8368,33 +8464,39 @@ export namespace Prisma {
 
   export type ModelCreateManyInput = {
     id?: string
-    username: string
+    name: string
     type: $Enums.ModelTypeEnum
+    age: number
     ethnicity: $Enums.EthnicityEnum
     eyeColor: $Enums.EyeColorEnum
     bald: boolean
+    userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type ModelUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     type?: EnumModelTypeEnumFieldUpdateOperationsInput | $Enums.ModelTypeEnum
+    age?: IntFieldUpdateOperationsInput | number
     ethnicity?: EnumEthnicityEnumFieldUpdateOperationsInput | $Enums.EthnicityEnum
     eyeColor?: EnumEyeColorEnumFieldUpdateOperationsInput | $Enums.EyeColorEnum
     bald?: BoolFieldUpdateOperationsInput | boolean
+    userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ModelUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     type?: EnumModelTypeEnumFieldUpdateOperationsInput | $Enums.ModelTypeEnum
+    age?: IntFieldUpdateOperationsInput | number
     ethnicity?: EnumEthnicityEnumFieldUpdateOperationsInput | $Enums.EthnicityEnum
     eyeColor?: EnumEyeColorEnumFieldUpdateOperationsInput | $Enums.EyeColorEnum
     bald?: BoolFieldUpdateOperationsInput | boolean
+    userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8709,6 +8811,17 @@ export namespace Prisma {
     not?: NestedEnumModelTypeEnumFilter<$PrismaModel> | $Enums.ModelTypeEnum
   }
 
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
   export type EnumEthnicityEnumFilter<$PrismaModel = never> = {
     equals?: $Enums.EthnicityEnum | EnumEthnicityEnumFieldRefInput<$PrismaModel>
     in?: $Enums.EthnicityEnum[] | ListEnumEthnicityEnumFieldRefInput<$PrismaModel>
@@ -8750,35 +8863,49 @@ export namespace Prisma {
 
   export type ModelCountOrderByAggregateInput = {
     id?: SortOrder
-    username?: SortOrder
+    name?: SortOrder
     type?: SortOrder
+    age?: SortOrder
     ethnicity?: SortOrder
     eyeColor?: SortOrder
     bald?: SortOrder
+    userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
+  export type ModelAvgOrderByAggregateInput = {
+    age?: SortOrder
+  }
+
   export type ModelMaxOrderByAggregateInput = {
     id?: SortOrder
-    username?: SortOrder
+    name?: SortOrder
     type?: SortOrder
+    age?: SortOrder
     ethnicity?: SortOrder
     eyeColor?: SortOrder
     bald?: SortOrder
+    userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type ModelMinOrderByAggregateInput = {
     id?: SortOrder
-    username?: SortOrder
+    name?: SortOrder
     type?: SortOrder
+    age?: SortOrder
     ethnicity?: SortOrder
     eyeColor?: SortOrder
     bald?: SortOrder
+    userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type ModelSumOrderByAggregateInput = {
+    age?: SortOrder
   }
 
   export type EnumModelTypeEnumWithAggregatesFilter<$PrismaModel = never> = {
@@ -8789,6 +8916,22 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumModelTypeEnumFilter<$PrismaModel>
     _max?: NestedEnumModelTypeEnumFilter<$PrismaModel>
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type EnumEthnicityEnumWithAggregatesFilter<$PrismaModel = never> = {
@@ -8959,6 +9102,14 @@ export namespace Prisma {
 
   export type EnumModelTypeEnumFieldUpdateOperationsInput = {
     set?: $Enums.ModelTypeEnum
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type EnumEthnicityEnumFieldUpdateOperationsInput = {
@@ -9258,6 +9409,33 @@ export namespace Prisma {
     _max?: NestedEnumModelTypeEnumFilter<$PrismaModel>
   }
 
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
   export type NestedEnumEthnicityEnumWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.EthnicityEnum | EnumEthnicityEnumFieldRefInput<$PrismaModel>
     in?: $Enums.EthnicityEnum[] | ListEnumEthnicityEnumFieldRefInput<$PrismaModel>
@@ -9387,11 +9565,13 @@ export namespace Prisma {
 
   export type ModelCreateWithoutTrainingImagesInput = {
     id?: string
-    username: string
+    name: string
     type: $Enums.ModelTypeEnum
+    age: number
     ethnicity: $Enums.EthnicityEnum
     eyeColor: $Enums.EyeColorEnum
     bald: boolean
+    userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
     outputImages?: OutputImagesCreateNestedManyWithoutModelInput
@@ -9399,11 +9579,13 @@ export namespace Prisma {
 
   export type ModelUncheckedCreateWithoutTrainingImagesInput = {
     id?: string
-    username: string
+    name: string
     type: $Enums.ModelTypeEnum
+    age: number
     ethnicity: $Enums.EthnicityEnum
     eyeColor: $Enums.EyeColorEnum
     bald: boolean
+    userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
     outputImages?: OutputImagesUncheckedCreateNestedManyWithoutModelInput
@@ -9427,11 +9609,13 @@ export namespace Prisma {
 
   export type ModelUpdateWithoutTrainingImagesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     type?: EnumModelTypeEnumFieldUpdateOperationsInput | $Enums.ModelTypeEnum
+    age?: IntFieldUpdateOperationsInput | number
     ethnicity?: EnumEthnicityEnumFieldUpdateOperationsInput | $Enums.EthnicityEnum
     eyeColor?: EnumEyeColorEnumFieldUpdateOperationsInput | $Enums.EyeColorEnum
     bald?: BoolFieldUpdateOperationsInput | boolean
+    userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     outputImages?: OutputImagesUpdateManyWithoutModelNestedInput
@@ -9439,11 +9623,13 @@ export namespace Prisma {
 
   export type ModelUncheckedUpdateWithoutTrainingImagesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     type?: EnumModelTypeEnumFieldUpdateOperationsInput | $Enums.ModelTypeEnum
+    age?: IntFieldUpdateOperationsInput | number
     ethnicity?: EnumEthnicityEnumFieldUpdateOperationsInput | $Enums.EthnicityEnum
     eyeColor?: EnumEyeColorEnumFieldUpdateOperationsInput | $Enums.EyeColorEnum
     bald?: BoolFieldUpdateOperationsInput | boolean
+    userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     outputImages?: OutputImagesUncheckedUpdateManyWithoutModelNestedInput
@@ -9451,11 +9637,13 @@ export namespace Prisma {
 
   export type ModelCreateWithoutOutputImagesInput = {
     id?: string
-    username: string
+    name: string
     type: $Enums.ModelTypeEnum
+    age: number
     ethnicity: $Enums.EthnicityEnum
     eyeColor: $Enums.EyeColorEnum
     bald: boolean
+    userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
     trainingImages?: TrainingImagesCreateNestedManyWithoutModelInput
@@ -9463,11 +9651,13 @@ export namespace Prisma {
 
   export type ModelUncheckedCreateWithoutOutputImagesInput = {
     id?: string
-    username: string
+    name: string
     type: $Enums.ModelTypeEnum
+    age: number
     ethnicity: $Enums.EthnicityEnum
     eyeColor: $Enums.EyeColorEnum
     bald: boolean
+    userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
     trainingImages?: TrainingImagesUncheckedCreateNestedManyWithoutModelInput
@@ -9491,11 +9681,13 @@ export namespace Prisma {
 
   export type ModelUpdateWithoutOutputImagesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     type?: EnumModelTypeEnumFieldUpdateOperationsInput | $Enums.ModelTypeEnum
+    age?: IntFieldUpdateOperationsInput | number
     ethnicity?: EnumEthnicityEnumFieldUpdateOperationsInput | $Enums.EthnicityEnum
     eyeColor?: EnumEyeColorEnumFieldUpdateOperationsInput | $Enums.EyeColorEnum
     bald?: BoolFieldUpdateOperationsInput | boolean
+    userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     trainingImages?: TrainingImagesUpdateManyWithoutModelNestedInput
@@ -9503,11 +9695,13 @@ export namespace Prisma {
 
   export type ModelUncheckedUpdateWithoutOutputImagesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
     type?: EnumModelTypeEnumFieldUpdateOperationsInput | $Enums.ModelTypeEnum
+    age?: IntFieldUpdateOperationsInput | number
     ethnicity?: EnumEthnicityEnumFieldUpdateOperationsInput | $Enums.EthnicityEnum
     eyeColor?: EnumEyeColorEnumFieldUpdateOperationsInput | $Enums.EyeColorEnum
     bald?: BoolFieldUpdateOperationsInput | boolean
+    userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     trainingImages?: TrainingImagesUncheckedUpdateManyWithoutModelNestedInput

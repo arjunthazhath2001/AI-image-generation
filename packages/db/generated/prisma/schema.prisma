@@ -24,11 +24,13 @@ model User {
 
 model Model {
   id             String           @id @default(uuid())
-  username       String
+  name           String
   type           ModelTypeEnum
+  age            Int
   ethnicity      EthnicityEnum
   eyeColor       EyeColorEnum
   bald           Boolean
+  userId         String
   trainingImages TrainingImages[]
   outputImages   OutputImages[]
   createdAt      DateTime         @default(now())
@@ -74,11 +76,11 @@ enum ModelTypeEnum {
 enum EthnicityEnum {
   White
   Black
-  AsianAmerican
-  EastAsian
-  SouthEastAsian
-  SouthAsian
-  MiddleEastern
+  Asian_American   @map("Asian American")
+  East_Asian       @map("East Asian")
+  South_East_Asian @map("South East Asian")
+  South_Asian      @map("South Asian")
+  Middle_Eastern   @map("Middle Eastern")
   Pacific
   Hispanic
 }
