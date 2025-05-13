@@ -1,0 +1,83 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String  @id @default(uuid())
+  username       String
+  profilePicture String?
+}
+model Model{
+
+      id             String  @id @default(uuid())
+      username       String
+      type           ModelTypeEnum
+      ethnicity      EthnicityEnum 
+      eyeColor       EyeColorEnum
+      bald           Boolean  
+ }
+
+
+
+model TrainingImages {
+      id            String  @id @default(uuid())
+      imageUrl      String
+}
+
+
+model OutputImages {
+      id            String  @id @default(uuid())
+      imageUrl      String
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+enum ModelTypeEnum {
+  Man
+  Woman
+  Others
+}
+
+enum EthnicityEnum {
+    White
+    Black
+    AsianAmerican
+    EastAsian
+    SouthEastAsian
+    SouthAsian
+    MiddleEastern
+    Pacific
+    Hispanic
+}
+
+enum EyeColorEnum {
+    Brown
+    Blue
+    Hazel
+    Gray
+}
+
